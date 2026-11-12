@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LISTA PENDIENTES FN</title>
+    
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="app-header"></header>
+    
+    <!-- Menú Flotante (Botón de Acción) -->
+    <div class="fab-container">
+        <ul class="fab-menu" id="fabMenu">
+            <li data-target="panel-general">Pendientes FLC</li>
+            <li data-target="panel-tourney">Torneos Pendientes</li>
+            <li data-target="panel-team">Pendientes Equipo</li>
+        </ul>
+        <button class="fab-button" id="fabButton">+</button>
+    </div>
+
+    <main class="dashboard">
+
+        <!-- Menú de inicio central -->
+        <div id="homeMenu" class="home-menu">
+        <button class="home-btn" data-target="panel-general">Pendientes FLC</button>
+        <button class="home-btn" data-target="panel-tourney">Torneos Pendientes</button>
+        <button class="home-btn" data-target="panel-team">Pendientes Equipo</button>
+        </div>
+
+        <!-- Marca de agua inicial -->
+        <div id="watermark" class="watermark-container"></div>
+
+        <!-- Lista 1: General (Inicia oculta) -->
+        <div id="panel-general" class="app-container hidden">
+            <h1>Pendientes FLC</h1>
+            <button class="close-btn">← Volver</button>
+            <div class="input-section">
+                <input type="text" id="inputGeneral" placeholder="Tarea general...">
+                <button id="btnGeneral">Agregar</button>
+            </div>
+            <ul id="listGeneral"></ul>
+        </div>
+
+        <!-- Lista 2: Torneos (Inicia oculta) -->
+        <div id="panel-tourney" class="app-container hidden">
+            <h1>Torneos Pendientes</h1>
+            <button class="close-btn">← Volver</button>
+            <div class="input-section">
+                <input type="text" id="inputTourney" placeholder="Nuevo torneo...">
+                <button id="btnTourney">Agregar</button>
+            </div>
+            <ul id="listTourney"></ul>
+        </div>
+
+        <!-- Lista 3: Equipo (Inicia oculta) -->
+        <div id="panel-team" class="app-container hidden">
+            <h1>Pendientes Equipo</h1>
+            <button class="close-btn">← Volver</button>
+            <div class="input-section">
+                <input type="text" id="inputTeam" placeholder="Tarea del equipo...">
+                <button id="btnTeam">Agregar</button>
+            </div>
+            <ul id="listTeam"></ul>
+        </div>
+    </main>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,578 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #050505; 
+    color: #ffffff;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;    
+    min-height: 100vh;
+}
+
+.dashboard {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;
+    gap: 30px;
+    width: 100%;
+    padding: 0 20px;
+    margin-bottom: 50px;
+}
+
+.app-container {
+    background-color: #111111;
+    flex: 1 1 350px;
+    max-width: 450px;
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.9);
+    border-top: 3px solid #d4af37; 
+    border-bottom: 3px solid #e63946; 
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #ffffff;
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.input-section {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 35px;
+}
+
+#taskInput {
+    flex: 1;
+    padding: 14px 18px;
+    background-color: #ffffff;
+    color: #000000;
+    border: 2px solid #ffffff;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+#taskInput::placeholder {
+    color: #666666;
+    font-weight: 400;
+}
+
+#taskInput:focus {
+    border-color: #d4af37;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+}
+
+#addButton {
+    padding: 0 25px;
+    background-color: #d4af37; 
+    color: #000000;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#addButton:hover {
+    background-color: #ffffff;
+    color: #000000;
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    background-color: #0a0a0a;
+    margin-bottom: 15px;
+    padding: 15px 20px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Borde rojo característico para cada tarea */
+    border-left: 5px solid #e63946; 
+    border-right: 1px solid #222;
+    border-top: 1px solid #222;
+    border-bottom: 1px solid #222;
+    color: #ffffff;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    animation: slideIn 0.4s ease forwards;
+}
+
+li:hover {
+    /* El borde cambia a dorado al pasar el ratón */
+    border-color: #d4af37; 
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.15);
+    transform: translateX(5px);
+}
+
+.delete-btn {
+    background-color: #e63946; /* Rojo intenso */
+    color: #ffffff; /* Letra blanca */
+    border: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.delete-btn:hover {
+    /* Se invierte a blanco con texto rojo al pasar el ratón */
+    background-color: #ffffff;
+    color: #e63946;
+    box-shadow: 0 4px 10px rgba(230, 57, 70, 0.4);
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.app-header {
+    width: 100%;
+    max-width: none; /* Le damos exactamente el mismo ancho máximo que tiene tu app-container */
+    height: 200px;
+    background-image: url('FONDO FN.png'); /* Recuerda que si le cambiaste el nombre sin espacios, ponlo aquí */
+    background-size: cover;
+    background-position: center;
+    border-radius: 0px; /* Bordes redondeados para que combine con la tarjeta */
+    margin-bottom: 40px; /* Espacio de separación entre la imagen y el contenedor de tareas */
+    border-bottom: 5px solid #d4af37; /* Línea dorada inferior */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+}
+
+/* Opcional: Ajusta un poco el margen del H1 para que se vea más equilibrado debajo del banner */
+h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #ffffff;
+    font-size: 26px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Contenedor del botón flotante */
+.fab-container {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+/* El botón circular '+' */
+.fab-button {
+    width: 65px;
+    height: 65px;
+    background-color: #d4af37;
+    color: #000000;
+    border: none;
+    border-radius: 50%;
+    font-size: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+    transition: all 0.3s ease;
+}
+
+/* Efecto al pasar el ratón sobre el botón */
+.fab-button:hover {
+    transform: scale(1.05);
+    background-color: #ffffff;
+    box-shadow: 0 5px 20px rgba(255, 255, 255, 0.4);
+}
+
+/* Animación del botón cuando el menú está abierto (gira para ser una X roja) */
+.fab-button.active {
+    transform: rotate(45deg); 
+    background-color: #e63946;
+    color: #ffffff;
+    box-shadow: 0 5px 15px rgba(230, 57, 70, 0.4);
+}
+
+/* El menú desplegable flotante */
+.fab-menu {
+    list-style: none;
+    background-color: #111111;
+    border: 2px solid #333;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    padding: 10px 0;
+    width: 220px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.9);
+    
+    /* Inicia oculto y desplazado un poco hacia abajo */
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+/* Clase para mostrar el menú flotante con animación */
+.fab-menu.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.fab-menu li {
+    padding: 15px 20px;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border-bottom: 1px solid #222;
+    background-color: transparent;
+    margin-bottom: 0;
+    animation: none; /* Anula la animación de las tareas */
+    border-left: none;
+    border-right: none;
+    border-top: none;
+}
+
+.fab-menu li:last-child {
+    border-bottom: none;
+}
+
+.fab-menu li:hover {
+    background-color: #222;
+    color: #d4af37;
+    transform: translateX(0);
+    box-shadow: none;
+}
+
+/* Clase para ocultar paneles inactivos */
+.hidden {
+    display: none !important;
+}
+
+/* Estilo para la marca de agua */
+.watermark-container {
+    width: 100%;
+    max-width: 300px;
+    height: 300px;
+    background-image: url('LOGO FN ACD.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.15; /* Nivel de transparencia (0.15 es 15% visible) */
+    margin: 40px auto;
+    transition: opacity 0.3s ease;
+}
+
+/* ==========================================
+   ESTILO DE BOTONES DE AGREGAR (DORADOS)
+   ========================================== */
+.input-section button {
+    background-color: #FFD700; /* Dorado brillante */
+    color: #000000; /* Texto negro */
+    border: 2px solid #FFD700;
+    padding: 10px 20px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s ease; /* Animación suave */
+}
+
+/* Efecto al pasar el mouse por encima */
+.input-section button:hover {
+    background-color: #000000; /* Fondo negro */
+    color: #FFD700; /* Texto dorado */
+    box-shadow: 0 0 10px #FFD700; /* Resplandor dorado */
+}
+
+/* ==========================================
+   CENTRAR INPUT Y BOTÓN DE AGREGAR
+   ========================================== */
+.input-section {
+    display: flex;
+    justify-content: center; /* Centra los elementos horizontalmente */
+    align-items: center; /* Centra los elementos verticalmente */
+    gap: 10px; /* Crea una separación limpia entre la caja de texto y el botón */
+    margin-bottom: 20px;
+}
+
+/* ==========================================
+   ALINEAR TAREAS Y BOTONES DE BORRAR
+   ========================================== */
+.app-container ul {
+    list-style: none; /* Quita los puntos feos de las listas por defecto */
+    padding: 0;
+    margin: 0;
+}
+
+.app-container li {
+    display: flex;
+    justify-content: space-between; /* Texto a la izquierda, botón a la derecha */
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.05); /* Fondo oscuro transparente para cada tarea */
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-left: 3px solid #FFD700; /* Detalle dorado a un lado de la tarea */
+    border-radius: 4px;
+}
+
+.app-container {
+    position: relative;
+}
+
+/* ==========================================
+   BOTONES CENTRALES DE INICIO (EN FILA EN EL CUERPO)
+   ========================================== */
+.home-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: -30px; /* Aumentamos el valor negativo para pegarlos más al borde */
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 10;
+}
+
+.home-btn {
+    background-color: #000000;
+    color: #FFD700;
+    border: 2px solid #8B0000;
+    padding: 10px 15px; 
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 8px;
+    width: auto; 
+    transition: all 0.3s ease;
+}
+
+.home-btn:hover {
+    background-color: #FFD700;
+    color: #000000;
+    border-color: #FFD700;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+}
+
+/* ==========================================
+   ESTILO PERSONALIZADO DEL CHECKBOX
+   ========================================== */
+.task-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Ocultamos el diseño por defecto del navegador */
+.task-check {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 24px;
+    height: 24px;
+    background-color: #000000;
+    border: 2px solid #FFD700; /* Borde dorado */
+    border-radius: 5px; /* Bordes ligeramente redondeados */
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+/* Efecto de resplandor al pasar el mouse */
+.task-check:hover {
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+    background-color: rgba(255, 215, 0, 0.1);
+}
+
+/* Estado cuando se marca la casilla */
+.task-check:checked {
+    background-color: #FFD700; /* Se llena de dorado */
+    border-color: #FFD700;
+    animation: checkPop 0.3s ease-in-out; /* Animación de salto */
+}
+
+/* Dibujo del "chulito" o palomita (creado solo con CSS) */
+.task-check:checked::after {
+    content: "";
+    position: absolute;
+    width: 6px;
+    height: 12px;
+    border: solid #000000; /* Palomita negra para contrastar con el fondo dorado */
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+    top: 2px;
+    left: 7px;
+}
+
+/* Animación cuando marcas la tarea */
+@keyframes checkPop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+
+/* ==========================================
+   ADAPTACIÓN TOTAL PARA CELULARES (MÓVIL)
+   ========================================== */
+@media (max-width: 768px) {
+    /* 1. Botones Centrales de Inicio */
+    .home-menu {
+        gap: 8px;
+        margin-top: -20px; /* Ajuste suave para que no choque con el header */
+        padding: 0 10px; /* Evita que se peguen a los bordes de la pantalla */
+    }
+    
+    .home-btn {
+        padding: 8px 10px;
+        font-size: 11px; /* Letra ideal para leer en móvil sin hacer zoom */
+        border-width: 1.5px;
+        border-radius: 6px;
+        flex-grow: 1; /* Hace que los botones se repartan el ancho parejo */
+        text-align: center;
+    }
+
+    /* 2. Paneles y Títulos */
+    .app-container {
+        padding: 15px; /* Menos espacio muerto a los lados */
+    }
+
+    .app-container h1 {
+        font-size: 20px; /* Títulos proporcionados al tamaño de pantalla */
+        margin-bottom: 15px;
+    }
+
+    /* 3. Barra de Agregar Tareas */
+    .input-section {
+        gap: 8px; /* Acerca más la caja de texto al botón Agregar */
+    }
+
+    .input-section input {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px; /* Letra de 14px evita que el iPhone haga zoom automático */
+    }
+
+    .input-section button {
+        padding: 10px 15px;
+        font-size: 12px;
+    }
+
+    /* 4. Lista de Tareas y Checkbox */
+    .app-container li {
+        padding: 12px 10px; /* Tareas más fáciles de tocar con el dedo */
+    }
+
+    .task-content span {
+        font-size: 14px; 
+    }
+
+    /* Se encoge ligeramente el cuadro dorado */
+    .task-check {
+        width: 20px;
+        height: 20px;
+        border-width: 1.5px;
+    }
+
+    /* Ajuste milimétrico de la palomita/chulito para el nuevo tamaño */
+    .task-check:checked::after {
+        top: 2px;
+        left: 6px;
+        width: 4px;
+        height: 9px;
+        border-width: 0 2px 2px 0;
+    }
+
+    /* 5. Botón Flotante (+) y su Menú */
+    .fab-button {
+        width: 50px; /* Un poco más pequeño pero fácil de presionar */
+        height: 50px;
+        font-size: 24px;
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    .fab-menu {
+        bottom: 80px;
+        right: 20px;
+    }
+    
+    .fab-menu li {
+        padding: 10px 15px;
+        font-size: 13px;
+    }
+}
+
+/* ==========================================
+   AJUSTE PARA PANTALLAS SÚPER PEQUEÑAS
+   ========================================== */
+@media (max-width: 400px) {
+    /* Si el celular es muy angosto, los botones centrales se apilan hacia abajo */
+    .home-menu {
+        flex-direction: column;
+        width: 90%;
+        margin: -15px auto 20px auto;
+    }
+    
+    .home-btn {
+        width: 100%; /* Cada botón ocupa todo el ancho */
+    }
+}
+
+/* ==========================================
+   BOTÓN DE VOLVER (ESQUINA SUPERIOR IZQUIERDA)
+   ========================================== */
+.close-btn {
+    position: absolute; /* Lo saca del flujo normal y lo deja flotando libremente */
+    top: 15px; /* Distancia desde arriba del panel */
+    left: 20px; /* Distancia desde la izquierda del panel */
+    background-color: transparent;
+    color: #FFD700;
+    border: none; /* Quitamos el borde para un look más minimalista */
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 5px;
+    transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+    color: #FFFFFF;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.8); /* Brillo dorado al pasar el mouse */
+    transform: translateX(-3px); /* Pequeña animación hacia atrás (izquierda) */
+}
