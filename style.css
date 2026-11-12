@@ -161,7 +161,7 @@ li:hover {
     width: 100%;
     max-width: none; /* Le damos exactamente el mismo ancho máximo que tiene tu app-container */
     height: 200px;
-    background-image: url('FONDO FN.png'); /* Recuerda que si le cambiaste el nombre sin espacios, ponlo aquí */
+    background-image: url('FONDO\ FN.PNG'); /* Recuerda que si le cambiaste el nombre sin espacios, ponlo aquí */
     background-size: cover;
     background-position: center;
     border-radius: 0px; /* Bordes redondeados para que combine con la tarjeta */
